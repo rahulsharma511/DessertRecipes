@@ -4,21 +4,17 @@
 //
 //  Created by Rahul Sharma on 2/2/24.
 //
-
 import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
-        }
-        .padding()
+        MealView()
     }
 }
 
-#Preview {
-    ContentView()
+// Preview Provider
+struct ContentView_Previews: PreviewProvider {
+    static var previews: some View {
+        ContentView()
+    }
 }
