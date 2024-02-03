@@ -38,7 +38,7 @@ struct MealView: View {
                 case .success(let mealsResponse):
                     self.meals = mealsResponse.meals
                 case .failure(let error):
-                    print(error.localizedDescription) // Handle the error more gracefully in a real app
+                    print(error.localizedDescription)
                 }
             }
         }

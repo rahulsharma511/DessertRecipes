@@ -11,12 +11,24 @@ struct MealDetailView: View {
                 ProgressView()
             } else if let mealDetails = mealDetails {
                 VStack(alignment: .leading, spacing: 20) {
-                    AsyncImage(url: URL(string: mealDetails.strMealThumb)) { image in
+//                    AsyncImage(url: URL(string: mealDetails.strMealThumb)) 
+                    AsyncImage(url: mealDetails.strMealThumb)
+                    { image in
                         image.resizable()
                     } placeholder: {
                         ProgressView()
                     }
                     .aspectRatio(contentMode: .fit)
+                    
+                    VStack(alignment: .leading) {
+                                        Text("Ingredients")
+                                            .font(.headline)
+                                        ForEach(mealDetails.ingredients, id: \.ingredient) { ingredientMeasure in
+                                            Text("\(ingredientMeasure.ingredient): \(ingredientMeasure.measure)")
+                                        }
+                                    }
+                                    .padding(.horizontal)
+
                     
                     Text(mealDetails.strMeal)
                         .font(.title)
@@ -28,7 +40,7 @@ struct MealDetailView: View {
                     Text(mealDetails.strInstructions)
                         .padding(.bottom, 20)
                     
-                    if let youtubeURL = mealDetails.strYoutube, let url = URL(string: youtubeURL) {
+                    if let url = mealDetails.strYoutube {
                         Link("Watch on YouTube", destination: url)
                     }
                 }
